@@ -1,0 +1,95 @@
+
+// Fix: Using Component from react import directly and ensuring standard property access.
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AlertTriangle } from 'lucide-react';
+
+interface Props {
+  children?: ReactNode;
+}
+
+interface State {
+  hasError: boolean;
+  error: Error | null;
+}
+
+/**
+ * ErrorBoundary catches errors in the component tree to prevent the whole app from crashing.
+ * Using standard React class patterns to ensure error catching in production environments.
+ */
+// Fix: Extending Component directly from 'react' to ensure TypeScript correctly recognizes inherited 'props' and 'state' properties.
+class ErrorBoundary extends Component<Props, State> {
+  // Fix: Explicitly declaring the props and state properties ensures they are recognized as members of the class by the TypeScript compiler.
+  public props: Props;
+  public state: State = {
+    hasError: false,
+    error: null
+  };
+
+  constructor(props: Props) {
+    super(props);
+    // Fix: Manually assigning props ensures consistency in strict type-checking environments.
+    this.props = props;
+  }
+
+  public static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error };
+  }
+
+  // Standard React lifecycle method for catching errors in children.
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
+
+  // The render method now correctly identifies 'this.state' and 'this.props' as members of the class.
+  public render() {
+    // Fix: Accessing state and props via standard class properties 'this.state' and 'this.props'.
+    // Using Component as the base class ensures these properties are correctly inherited and recognized by TypeScript.
+    const { hasError, error } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+          <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center border border-slate-200">
+            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <AlertTriangle className="w-8 h-8 text-red-600" />
+            </div>
+            <h1 className="text-xl font-bold text-slate-800 mb-2">Something went wrong</h1>
+            <p className="text-slate-500 mb-6 text-sm">
+              The application encountered an error while loading.
+            </p>
+            <div className="bg-slate-100 p-4 rounded-lg text-left overflow-auto max-h-40 mb-6">
+              <code className="text-xs text-red-600 font-mono break-all">
+                {error?.message || "Unknown Error"}
+              </code>
+            </div>
+            <button 
+              onClick={() => window.location.reload()}
+              className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              Reload Application
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return children;
+  }
+}
+
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </React.StrictMode>
+  );
+} else {
+  console.error("Fatal Error: Could not find root element to mount the application.");
+}

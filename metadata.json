@@ -1,0 +1,7 @@
+{
+  "name": "J.C. Juneja Hospital 2026",
+  "description": "Patient Services for J.C. Juneja Hospital (Charitable Hospital of Mankind).",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
