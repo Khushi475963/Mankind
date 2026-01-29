@@ -16,7 +16,7 @@ export const DOCTORS_DATA: Doctor[] = [
   { name: 'Dr. Rahul Sharma', specialty: 'General Surgeon', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-indigo-100 text-indigo-600' },
   { name: 'Dr. Rajesh Kumar Tayal', specialty: 'Orthopedic Specialist', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-amber-100 text-amber-600' },
   { name: 'Dr. Rajat Mangla', specialty: 'Anaesthetist', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-purple-100 text-purple-600' },
-  { name: 'Dr. Shalini Mangla', specialty: 'Pediatrician', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-pink-100 text-pink-600' },
+  { name: 'Dr. Shalinee Mangla', specialty: 'Pediatrician', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-pink-100 text-pink-600' },
   { name: 'Dr. Romani Bansal', specialty: 'Pediatrician', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-rose-100 text-rose-600' },
   { name: 'Dr. Roushali Kumar', specialty: 'Obstetrics & Gynecology', type: 'Regular OPD', days: 'Daily', timing: '9:30 AM - 4:00 PM', imageColor: 'bg-fuchsia-100 text-fuchsia-600' },
   { name: 'Dr. Neha', specialty: 'Pedodentist', type: 'Regular OPD', days: 'Tuesday & Friday', timing: '10:00 AM - 4:00 PM', imageColor: 'bg-rose-100 text-rose-600' },
