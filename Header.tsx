@@ -52,7 +52,7 @@ const Header: React.FC<Props> = ({ selectedLanguage }) => {
             {/* Hospital Brand - Hardcoded English Heading */}
             <div className="flex flex-col">
               <h1 className="text-lg md:text-xl font-black text-slate-800 tracking-tight leading-tight">
-                J.C. Juneja Hospital
+                J.C. Juneja Hospital Village Surajpur, Nahan road Paonta Sahib, H.P
               </h1>
               <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">
                 {t.tagline}
